@@ -1,0 +1,61 @@
+body {
+	background-color: #FBCB69;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+h2 {
+	font-family: "Arial", "Verdana", Sans-serif;
+	color: red;
+	font-weight: normal;
+	text-align: center;
+}
+
+p {
+	text-align: center;
+}
+
+.create-update-form {
+	margin: 20px;
+}
+
+.burgerItemDiv {
+	display: block;
+	margin: 0;
+}
+
+.burgerItem {
+	height: 50px;
+	width: 250px;
+	text-align: center;
+	display: inline-block;
+}
+
+.devourButton {
+	display: inline-block;
+	margin: 20px;
+}
+
+#burgersEaten {
+	display: inline;
+	margin: 20px;
+	width: 300px;
+}
+
+.burgerEatenItem {
+	display: block;
+	color: gray;
+	width: 300px;
+	height: 20px;
+}
+
+#newBurger {
+	display: block;
+	margin: auto;
+	height: 80px;
+	width: 300px;
+	text-align: center;
+}
