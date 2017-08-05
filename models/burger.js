@@ -1,23 +1,20 @@
-var orm = require("../config/orm.js");
-
-var burger = {
-  all: function(cb) {
-    orm.selectAll("burgers", function(res) {
-      cb(res);
-    });
+module.exports = function(sequelize, DataTypes) {
+  var Burger = sequelize.define("Burger", {
+    burger_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    devoured: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    created_at: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP') 
+    }
   },
-  // The variables cols and vals are arrays.
-  create: function(cols, vals, cb) {
-    orm.insertOne("burgers", cols, vals, function(res) {
-      cb(res);
-    });
-  },
-  update: function(condition, cb) {
-    orm.updateOne("burgers", condition, function(res) {
-      cb(res);
-    });
-  }
+  {
+    timestamps: false
+  });
+  return Burger;
 };
-
-// Export the database functions for the controller (catsController.js).
-module.exports = burger;

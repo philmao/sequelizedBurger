@@ -8,6 +8,10 @@ var path = require("path");
 var app = express();
 var PORT = process.env.PORT || 3002;
 
+// Requiring our models for syncing
+var db = require("./models");
+
+// Static directory
 app.use(express.static("public"));
 
 // Sets up the Express app to handle data parsing
@@ -25,11 +29,12 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// Import routes and give the server access to them.
-var routes = require("./controllers/burgers_controller.js");
+// Routes
+// =============================================================
+require("./routes/api-routes.js")(app);
 
-app.use("/", routes);
-
-app.listen(PORT, function() {
-	console.log("App listening on PORT " + PORT);
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
 });
